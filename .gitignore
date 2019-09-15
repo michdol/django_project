@@ -1,2 +1,3 @@
 *.pyc
 certificates/dev-certificate.pub
+*.*.swp
