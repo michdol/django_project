@@ -1,14 +1,16 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+
+from users.models import User
 
 
-class CreateUserForm(forms.Form):
-    username = forms.CharField(
-        min_length=8,
-        max_length=150,
-    )
-    email = forms.EmailField()
-    password = forms.CharField(
-        min_length=8,
-        max_length=128,
-        widget=forms.PasswordInput()
-    )
+class CreateUserForm(UserCreationForm):
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = (
+            User.USERNAME_FIELD,
+            User.get_email_field_name(),
+            'password1',
+            'password2'
+        )
