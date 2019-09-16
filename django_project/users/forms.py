@@ -14,3 +14,18 @@ class CreateUserForm(UserCreationForm):
             'password1',
             'password2'
         )
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(
+        min_length=8,
+        max_length=150
+    )
+    password = forms.CharField(
+        min_length=8,
+        max_length=128,
+        widget=forms.PasswordInput()
+    )
+
+    class Meta:
+        fields = ('username', 'password')

@@ -1,9 +1,11 @@
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import DetailView
 from django.views.generic.edit import FormView
 
 from main.mixins import RedirectUnauthenticatedMixin
-from users.forms import CreateUserForm
+from users.forms import CreateUserForm, LoginForm
 
 
 class CreateUserView(FormView):
@@ -16,7 +18,31 @@ class CreateUserView(FormView):
         return super().form_valid(form)
 
 
-class ProfileView(RedirectUnauthenticatedMixin, DetailView):
+class LoginView(FormView):
+    template_name = 'registration/login.html'
+    form_class = LoginForm
+    success_url = '/users/profile/'
+
+    def get(request, *args, **kwargs):
+        print("kurwa get")
+        return super().get(request, *args, **kwargs)
+    def post(request, *args, **kwargs):
+        print('asdasdasd')
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        print('tutej klurwa')
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user = authenticate(self.request, username=username, password=password)
+        if user:
+            login(self.request, user)
+            return reverse(self.success_url)
+        else:
+            return self.get(self.request)
+
+
+class ProfileView(DetailView):
     template_name = 'users/profile.html'
 
     def get_object(self, queryset=None):
