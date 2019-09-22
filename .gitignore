@@ -1,3 +1,8 @@
 *.pyc
 certificates/dev-certificate.pub
 *.*.swp
+
+django_project/assets/app/v8-compile*
+django_project/assets/app/node_modules/
+django_project/assets/app/npm*
+django_project/static/*
