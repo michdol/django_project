@@ -7,7 +7,7 @@ six==1.10.0
 ssh-import-id==5.5
 subdomains==2.1.1
 django-debug-toolbar==1.9.1
-PyYAML==3.12
+PyYAML==5.4
 backcall==0.1.0
 chardet==2.3.0
 decorator==4.3.2
