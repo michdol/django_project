@@ -24,7 +24,7 @@ ptyprocess==0.6.0
 Pygments==2.3.1
 pytz==2018.9
 traitlets==4.3.2
-urllib3==1.13.1
+urllib3==1.26.5
 wcwidth==0.1.7
 mock==2.0.0
 git+git://github.com/michdol/django-subdomains.git#egg=django-subdomains
